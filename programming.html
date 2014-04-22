@@ -1,0 +1,151 @@
+﻿<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head runat="server">
+  <title></title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="humans.txt" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="assets/image/fav-new.ico" rel="shortcut icon" />
+  <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
+  <link type="text/css" rel="stylesheet" href="assets/style/code.css" />
+  <link href="assets/style/main.css" rel="stylesheet" />
+  <link type="text/css" rel="stylesheet" href="assets/style/jquery.fancybox.css" />
+  <script type="text/javascript" src="assets/script/plugin/jquery.js"></script>
+  <script type="text/javascript" src="assets/script/plugin/jquery.fancybox.js"></script>
+  <style>
+  .home-menu{ background-color:#1F8DD6 !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal">
+      <a style="float:left;" class="pure-menu-heading" id="title">Yazılım ve Programlama Dilleri</a>
+      <div id="div-header-levels"></div>
+      <ul>
+        <li class="pure-menu-selected"><a href="index.html">Anasayfa</a></li>
+        <li class="pure-menu-selected"><a href="about.html">Hakkında</a></li>
+      </ul>
+    </div>
+  </header>
+  <section>
+    <div class="pure-g-r">
+    <nav class="page-turners">
+      <a id="href-prev" href="#" class="prev"></a>
+      <a id="href-next" href="#" class="next"></a>
+    </nav>
+    <div class="pure-u-1 l-box-lrg">
+      <div id="div-content" class="div-center" data-item-number="0" data-max-item="4"></div>
+    </div>
+    </div>
+  </section>
+  <div id="div-helper-popup" class="display-none">
+    <p>Sayfalar arasında geçiş yaparken ileri gitmek için " <span style="vertical-align:sub;"><img style="width:15px;" src="assets/image/right.png"/></span> " geri gitmek için " <span style="vertical-align:sub;"><img style="width:15px;" src="assets/image/left.png"/></span> " butonuna tıklayabilirsin.</p>
+  </div>
+  <script type="text/javascript">
+    $(function()
+    {
+      $('#div-content').html(getContent(0));
+      setHeader(4, 0);
+      
+      $.fancybox.open($('#div-helper-popup'), {
+        autoSize: false,
+        width: "400px",
+        height: "auto",
+        closeBtn: true
+      });
+      
+      function getContent(itemNo){
+        var text = '';
+
+        switch (itemNo)
+        {
+        case 0:
+          text = '<h3>Yazılım</h3><p>Bilgisayar dünyası genel olarak iki bileşenden oluşur diyebiliriz. Bunlar <strong>yazılım</strong> ve <strong>donanımdır</strong>.</p><img src="assets/image/yazilim.png"/><img src="assets/image/donanim.png"/>';
+          break;
+        case 1:
+          text = '<h3>Yazılım</h3><p>Donanım bileşenleri gözle görülen klavye, fare, ekran gibi fiziksel nesnelerdir. Ancak siz bu parçalara ne yapacağını söylemezseniz, tüm bu parçalar kullanışsızdır. Yazılımın temel görevi tam burada ortaya çıkar bir araya gelen donanım parçalarının çalışmasını ve verilen komutları anlamasını sağlamaktır.</p><img src="assets/image/new_pc.jpg"/><p>Bilgisayar programcılarının basitçe yaptığı şey bilgisayara ne zaman, ne yapacağını ve nasıl yapacağını söylemektir. Şöyle de denebilir tıpkı farklı ülkelerdeki insanların farklı dilleri konuşması gibi bilgisayar ile konuşmanın dili ona komutlar söylemek, yazılım geliştirmektir.</p><p>Kısaca <strong>yazılım</strong>, bilgisayarda istediğimiz işlemleri yapmamızı sağlayan komutlardır. Bir başka deyişle <strong>yazılımlar</strong>, kullanıcı ile bilgisayar arasında iletişim kuran ve birbirini anlayan komutlar bütünüdür.</p>';
+          break;
+        case 2:
+          text = '<h3>Programlama Dilleri</h3><p>Bilgisayarda işlerimiz yapabilmemiz için yazılımlara ya da başka bir deyişle programlara ihtiyaç duyduğumuzu söylemiştik. Peki nasıl yapılır bu programlar?</p><img src="assets/image/question_marks.jpg"/ style="display:block; margin:0 auto;">';
+          break;
+        case 3:
+          text = '<h3>Programlama Dilleri</h3><div><img src="assets/image/lamp.jpg"/ style="float:left; margin-right:30px; ">Bilgisayarlarımız için aslında sadece iki durum vardır. “Açık” ve “Kapalı”. Bilgisayarlarımızın devre kartları ve kablolardan oluştuğunu söylemiştik. Bahsettiğimiz “Açık” durumu devrede elektrik olduğunu “Kapalı” durumu ise tam tersi anlamına gelmektedir. Uzmanlar bu durumları 1 ve 0 olarak adlandırırlar. İşte bu 1 ve 0 larla bilgisayarları programlar. Ancak bu işlem çok zordur ve çok az kişi bu işin üstesinden gelebilir. Bu yüzden uzmanlar programlama dilleri ve derleyicileri geliştirmişlerdir.</div><p>Derleyiciler aslında bir programdır. Biz bir programlama dilinde komutları yazdığımızda derleyiciler onu bilgisayarın anlayacağı dile çevirir. Yani biz derleyicilere bilgisayarımızın ne yapmasını istediğimiz söyleriz o da bilgisayara anlatır. Tıpkı bir tercüman gibi.</p>';
+          break;
+        case 4:
+          text = '<h3>Programlama Dilleri</h3><div><img src="assets/image/programming_languages.jpg"/ style="float:right;">Yazılımlar Visual Basic, Java, C#, C++ gibi programlama dilleri kullanılarak geliştirilir. Evet farklı farklı programlama dilleri vardır. Her birinin kendine göre de kolaylıkları ve zorlukları vardır. Bu daha çok yazılımcının seçtiği bir şeydir. Önemli olan yapmak istediğidir. Her programlama dilinin yazım şekli ve kullandığı  işaretler farklıdır ancak “döngüler”,”koşullar”,”değişkenler” gibi ortak yönleri vardır. Bu sayede programlar farklı dillerle yazılsalar bile aynı işi yapabilirler.</div>';
+          break;
+        default:
+          text = '';
+        }
+        return  text;
+      }
+      
+      function setHeader(maxItem, itemNo) {
+        var divHeader = $('#div-header-levels');
+
+        var html = '';
+        for (var i = 0; i < maxItem + 1; i++) {
+          if (itemNo == i)
+            html += '<span id="selected" class="tab" data-item-no="' + i + '">' + (i + 1) + '</span>';
+          else
+            html += '<span data-item-no="' + i + '"><a href="#" class="tab">' + (i + 1) + '</a></span>';
+        }
+
+        divHeader.html(html);
+
+        $('#div-header-levels > span').click(function (e) {
+          e.preventDefault();
+          var self = $(this);
+          if (self.attr('id') == 'selected')
+            return;
+
+          $('#div-content-blockly').addClass('display-none');
+
+          var newSelectedItem = parseInt(self.attr('data-item-no'));
+          var maxItem = parseInt($('#div-content').attr('data-max-item'));
+
+          setHeader(maxItem, newSelectedItem);
+
+          $('#div-content').attr('data-item-number', newSelectedItem);
+          $('#div-content').html(getContent(newSelectedItem));
+        });
+      };
+      
+      $('.page-turners a').click(function(e){
+        e.preventDefault();
+        
+        var self = $(this);
+        var selectedItem = parseInt($('#div-content').attr('data-item-number'));
+        var maxItem = parseInt($('#div-content').attr('data-max-item'));
+
+        var newSelectedItem = 0;
+
+        if(self.hasClass('prev')){
+          if(selectedItem == 0 )
+            return;
+          newSelectedItem = selectedItem - 1;
+        }
+        else{
+          if(selectedItem == maxItem )
+            return;
+          newSelectedItem = selectedItem + 1;
+        }
+
+        $('#div-content-blockly').addClass('display-none');
+        setHeader(maxItem, newSelectedItem);
+
+        $('#div-content').attr('data-item-number', newSelectedItem);
+
+        $('#div-content').html(getContent(newSelectedItem));
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+﻿<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head runat="server">
+  <title></title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="humans.txt" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="assets/image/fav-new.ico" rel="shortcut icon" />
+  <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
+  <link type="text/css" rel="stylesheet" href="assets/style/common.css" />
+  <link type="text/css" rel="stylesheet" href="assets/style/code.css" />
+  <link type="text/css" rel="stylesheet" href="assets/style/main.css" />
+  <link type="text/css" rel="stylesheet" href="assets/style/jquery.fancybox.css" />
+  <script type="text/javascript" src="assets/script/plugin/jquery.js"></script>
+  <script type="text/javascript" src="assets/script/plugin/jquery.fancybox.js"></script>
+  <script type="text/javascript" src="assets/script/soyutils.js"></script>
+  <script type="text/javascript" src="assets/script/common.js"></script>
+  <script type="text/javascript" src="assets/script/code.js"></script>
+  <script type="text/javascript" src="assets/script/blockly_compressed.js"></script>
+  <script type="text/javascript" src="assets/script/blocks_compressed.js"></script>
+  <script type="text/javascript" src="assets/script/javascript_compressed.js"></script>
+  <script type="text/javascript" src="assets/script/tr_code.js"></script>
+  <script type="text/javascript" src="assets/script/messages.js"></script>
+  <style>
+  .home-menu{ background-color:#1F8DD6 !important; }
+  .page-turners { width: 100%; overflow: hidden; position: fixed; height: 64px; top: 50%; margin-top: -32px; -o-user-select: none; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-transition: all .6s ease; -moz-transition: all .6s ease; -o-transition: all .6s ease; transition: all .6s ease; -webkit-transition-delay: .3s; -moz-transition-delay: .3s; -o-transition-delay: .3s; transition-delay: .3s; }
+
+  .page-turners .prev { left: -40px; text-align: right;position: absolute; background: url('assets/image/prev.png') no-repeat scroll 42px 23px / 18px 18px #C5D6DD; color: white; text-decoration: none; width: 64px; height: 64px; -webkit-border-radius: 64px; -moz-border-radius: 64px; border-radius: 64px;/* border: 0!important; */ line-height: 68px; padding: 0 6px; }
+
+  .page-turners .next { right: -40px; text-align: left;position: absolute; background: url('assets/image/next.png') no-repeat scroll 3px 23px / 18px 18px #C5D6DD; color: white; text-decoration: none; width: 64px; height: 64px; -webkit-border-radius: 64px; -moz-border-radius: 64px; border-radius: 64px; /* border: 0!important; */ line-height: 68px; padding: 0 6px; }
+
+  .page-turners > .prev:hover, .page-turners > .next:hover { cursor: pointer; background-color: #666; }
+
+  .display-none { display:none;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal">
+      <a style="float:left;" class="pure-menu-heading" id="title">Yazılım ve Programlama Dilleri</a>
+      <div id="div-header-levels"></div>
+      <ul>
+        <li class="pure-menu-selected"><a href="index.html">Anasayfa</a></li>
+        <li class="pure-menu-selected"><a href="about.html">Hakkında</a></li>
+      </ul>
+    </div>
+  </header>
+  <section>
+    <div class="pure-g-r">
+    <nav class="page-turners">
+      <a id="href-prev" href="#" class="prev"></a>
+      <a id="href-next" href="#" class="next"></a>
+    </nav>
+    <div class="pure-u-1 l-box-lrg">
+      <h1>Yazılım ve Programlama Dilleri</h1>
+      <div id="div-content" data-item-number="0" data-max-item="1"></div>
+      <div id="div-content-blockly">
+        <div class="pure-g-r">
+          <div class="pure-u-1"><div id="div-info-box"></div></div>
+        </div>
+        <div style="max-height: 600px;">
+          <div id="div-blockly-area" class="pure-g"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+    $(function()
+    {
+      $('#div-content').html(getContent(0));
+      setHeader(1,0);
+
+      codepage.toolbox = function(opt_data, opt_ignored, opt_ijData) {
+      return '<xml id="toolbox" style="display: none">'+
+          '<block type="controls_if"></block>'+
+          '<block type="logic_compare" ></block>'+
+          '<block type="logic_operation" ></block>'+
+          '<block type="logic_negate" ></block>'+
+          '<block type="logic_boolean" ></block>'+
+          '<block type="logic_null" ></block>'+
+      '</xml>';
+      };
+
+      $('#div-blockly-area').html(codepage.start({}, null, {
+        lang: BlocklyApps.LANG,
+        langSrc: 'messages.js'
+      }));
+
+      setTimeout(function(){$('#div-content-blockly').addClass('display-none')}, 60 );
+
+      function getContent(itemNo){
+        var text = '';
+
+        switch (itemNo)
+        {
+        case 0:
+          text = '<h3>Yazılım</h3><p>İlk önce bilmemiz gereken bilgisayarlar yazılımlar olmadan kartlardan, kablolardan ve metal parçalardan oluşan işe yaramayan cihazlardır. Yani bilgisarında yazılım olmasaydır sadece boş bir görüntü olurdu. Bilgisayarı oluşturan klavye, fare, ekran gibi parçalar ancak uygun yazılımlarla birlikte çalışabilir.</p><p>Yazılımı geliştiren uzmanlar yazdıkları komutlar ile bilgisayara yapmaları gereken şeyleri söylerler. Yazılımlardan gelen emirlerle de bilgisayarlar sahip oldukları parçaları hangi aşamada nasıl kullanacaklarını bilirler.</p><p>Buradan da anlayacağımız gibi yazılım, bilgisayarada istediğimiz işlemleri yapmamızı sağlayan komutlardır. Bir başka deyişle yazılımlar, kullanıcı ile bilgisayar arasında iletişim kuran ve birbirini anlayan komutlar bütünüdür.</p>';
+          break;
+        case 1:
+          $('svg[class="blocklySvg"]').remove();
+
+          $('#div-content-blockly').removeClass('display-none');
+          Blockly.inject(
+            document.getElementById('blockly'),
+            {path: '../../',
+             toolbox: '<xml id="toolbox" style="display: none">'+
+                        '<block type="text"></block>'+
+                        '<block type="text_print"></block>'+
+                        '<block type="variables_get"></block>'+
+                        '<block type="variables_set"></block>'+
+                      '</xml>',
+            trashcan: true}
+          );
+
+          text = '';
+          break;
+        default:
+          text = '';
+        }
+        return  text;
+      };
+
+      function setHeader (maxItem, itemNo){
+        var divHeader = $('#div-header-levels');
+
+        var html = '';
+        for (var i = 0; i < maxItem + 1; i++) {
+          if(itemNo == i)
+            html += '<span id="selected" class="tab" data-item-no="'+ i +'">'+ (i + 1) +'</span>';
+          else
+            html += '<span data-item-no="'+ i +'"><a href="#" class="tab">'+ (i + 1) +'</a></span>';
+        }
+        divHeader.html(html);
+
+        $('#div-header-levels > span').click(function(e){
+          e.preventDefault();
+          var self = $(this);
+          if(self.attr('id') == 'selected')
+            return;
+
+          $('#div-content-blockly').addClass('display-none');
+
+          var newSelectedItem = parseInt(self.attr('data-item-no'));
+          var maxItem = parseInt($('#div-content').attr('data-max-item'));
+
+          setHeader(maxItem, newSelectedItem);
+
+          $('#div-content').attr('data-item-number', newSelectedItem);
+          $('#div-content').html(getContent(newSelectedItem));
+        });
+      };
+
+      $('.page-turners a').click(function(e){
+        e.preventDefault();
+
+        var self = $(this);
+        var selectedItem = parseInt($('#div-content').attr('data-item-number'));
+        var maxItem = parseInt($('#div-content').attr('data-max-item'));
+
+        var newSelectedItem = 0;
+
+        if(self.hasClass('prev')){
+          if(selectedItem == 0 )
+            return;
+          newSelectedItem = selectedItem - 1;
+        }
+        else{
+          if(selectedItem == maxItem )
+            return;
+          newSelectedItem = selectedItem + 1;
+        }
+
+        $('#div-content-blockly').addClass('display-none');
+        setHeader(maxItem, newSelectedItem);
+
+        $('#div-content').attr('data-item-number', newSelectedItem);
+
+        $('#div-content').html(getContent(newSelectedItem));
+      });
+    });
+  </script>
+</body>
+</html>
